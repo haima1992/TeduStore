@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 
+	1.namespace表示命名空间  匹配的接口
+	2.必须为接口名
+ -->
+<mapper namespace="cn.tedu.store.mapper.AddressMapper">
+	<!-- 新增收获地址 -->
+	<!-- Integer insert(Address address) -->
+	<insert id="insert" 
+			parameterType="cn.tedu.store.entity.Address" 
+			useGeneratedKeys="true" 
+			keyProperty="id">
+		insert into t_address (
+			uid,
+			recv_name,
+			recv_province,
+			recv_city,
+			recv_area,
+			recv_address,
+			recv_district,
+			recv_phone,
+			recv_tel,
+			recv_zip,
+			tag,
+			is_default,
+			created_user,
+			created_time,
+			modified_user,
+			modified_time
+		) values (
+			#{uid},
+			#{recvName},
+			#{recvProvince},
+			#{recvCity},
+			#{recvArea},
+			#{recvAddress},
+			#{recvDistrict},
+			#{recvPhone},
+			#{recvTel},
+			#{recvZip},
+			#{tag},
+			#{isDefault},
+			#{createdUser},
+			#{createdTime},
+			#{modifiedUser},
+			#{modifiedTime}
+		)
+	</insert>
+	
+	<!-- 删除收货地址数据 -->
+	<!-- Integer delete(@Param("where")String where); -->
+	<delete id="delete">
+		delete from t_address where ${where}
+	</delete>
+	
+	<!-- 修改收货地址数据 -->
+	<!-- Integer update(Address address) -->
+	<update id="update" parameterType="cn.tedu.store.entity.Address">
+		update t_address set  
+		<if test="isDefault == null">
+			recv_name=#{recvName}, 
+			recv_province=#{recvProvince},
+			recv_city=#{recvCity},
+			recv_area=#{recvArea},
+			recv_address=#{recvAddress},
+			recv_district=#{recvDistrict},
+			recv_phone=#{recvPhone},
+			recv_tel=#{recvTel},
+			recv_zip=#{recvZip},
+			tag=#{tag},
+		</if>
+		<if test="isDefault != null">
+			is_default=#{isDefault},
+		</if>
+			modified_user = #{modifiedUser}, 
+			modified_Time = #{modifiedTime} 
+		where 
+			uid=#{uid} 
+		<if test="id != null">
+			and id=#{id}
+		</if>
+	</update>
+	
+	<!-- 查询收获地址信息 -->
+	<!-- List<Address> select(
+			@Param("where")String where,
+			@Param("orderBy")String orderBy,
+			@Param("offset")Integer offset,
+			@Param("countPerPage")Integer countPerPage); -->
+	<select id="select" resultType="cn.tedu.store.entity.Address">
+		select 
+			id, uid,
+			recv_name		AS recvName,
+			recv_province	AS recvProvince,
+			recv_city		AS recvCity,
+			recv_area		AS recvArea,
+			recv_address	AS recvAddress,
+			recv_district	AS recvDistrict,
+			recv_phone		AS recvPhone,
+			recv_tel		AS recvTel,
+			recv_zip		AS recvZip,
+			tag,
+			is_default		AS isDefault,
+			created_user	AS createdUser,
+			created_time	AS createdTime,
+			modified_user	AS modifiedUser,
+			modified_time	AS modifiedTime
+		from t_address
+		<if test="where != null">
+			where ${where}
+		</if> 
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+		<if test="offset != null">
+			limit #{offset},#{countPerPage}
+		</if>
+	</select>
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
