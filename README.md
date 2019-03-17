@@ -1,2 +1,2 @@
-# MyProject
-我的项目
+# TeduStore
+学子商城
