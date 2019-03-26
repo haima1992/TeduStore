@@ -7,20 +7,19 @@ import org.springframework.stereotype.Service;
 
 import cn.tedu.store.entity.Area;
 import cn.tedu.store.mapper.AreaMapper;
+
 @Service("areaService")
-public class AreaServiceImpl implements IAreaService{
-	
+public class AreaServiceImpl implements IAreaService {
+
 	@Autowired
 	private AreaMapper areaMapper;
 	
-	public List<Area> getAllAreaByCityCode(String cityCode) {
-		List<Area> areas = areaMapper.getAreaListByCityCode(cityCode);
-		return areas;
+	public List<Area> getAreaListByCityCode(String cityCode) {
+		return areaMapper.getAreaListByCityCode(cityCode);
 	}
 
 	public Area getAreaByCode(String areaCode) {
-		Area area = areaMapper.getAreaByCode(areaCode);
-		return area;
+		return areaMapper.getAreaByCode(areaCode);
 	}
-	
+
 }

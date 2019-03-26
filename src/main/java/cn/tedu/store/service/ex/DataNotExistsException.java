@@ -1,8 +1,9 @@
 package cn.tedu.store.service.ex;
 
-public class DataNotExistsException extends ServiceException {
+public class DataNotExistsException 
+	extends ServiceException {
 
-	private static final long serialVersionUID = -3742516611626043204L;
+	private static final long serialVersionUID = -8401634453977363362L;
 
 	public DataNotExistsException() {
 		super();
@@ -24,5 +25,5 @@ public class DataNotExistsException extends ServiceException {
 	public DataNotExistsException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

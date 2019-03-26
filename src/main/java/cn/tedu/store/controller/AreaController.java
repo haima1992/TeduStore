@@ -13,19 +13,35 @@ import cn.tedu.store.service.IAreaService;
 
 @Controller
 @RequestMapping("/area")
-public class AreaController extends BaseController{
+public class AreaController {
 	
 	@Autowired
 	private IAreaService areaService;
-	
+
 	@RequestMapping("/list.do")
 	@ResponseBody
-	public ResponseResult<List<Area>> getAreaList(String cityCode){
-		return new ResponseResult<List<Area>>(ResponseResult.STATE_OK,areaService.getAllAreaByCityCode(cityCode));
+	public ResponseResult<List<Area>> 
+		getList(String cityCode) {
+		ResponseResult<List<Area>> rr;
+		List<Area> areas = 
+				areaService
+					.getAreaListByCityCode(
+							cityCode);
+		rr = new ResponseResult<List<Area>>(
+				ResponseResult.STATE_OK, areas);
+		return rr;
 	}
+	
 	@RequestMapping("/info.do")
 	@ResponseBody
-	public ResponseResult<Area> getAreaByCode(String areaCode){
-		return new ResponseResult<Area>(ResponseResult.STATE_OK,areaService.getAreaByCode(areaCode));
+	public ResponseResult<Area>
+		getInfo(String code) {
+		ResponseResult<Area> rr;
+		Area area = 
+				areaService.getAreaByCode(code);
+		rr = new ResponseResult<Area>(
+				ResponseResult.STATE_OK, area);
+		return rr;
 	}
+	
 }

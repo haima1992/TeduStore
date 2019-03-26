@@ -19,47 +19,45 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
-   <!-- 组件扫描 -->
-   <context:component-scan base-package="cn.tedu.store.controller"/>
-   
-   <!-- 配置视图解析器 -->
-   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-   	<!-- 
-   		1.prefix表示前缀
-   		2.suffix表示后缀
-   		3.响应的页面是由:前缀+视图名称+后缀
-   				/WEB-INF/web/ hello .jsp
-   	-->
-   	<property name="prefix" value="/web/"/>
-   	<property name="suffix" value=".jsp"/>
-   </bean>
-   <!-- 
-   	1.基于注解的映射器默认是:org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping 该映射处理器是2.5版本的
-   	2.3.2版本定义一个新的映射处理器:RequestMappingHandlerMapping
-   	3.如果要改变默认的映射处理器,使用下面的配置
-   	4.默认初始化一些工具类:比如异常处理,解析json
-    -->
-   <mvc:annotation-driven/>
-   
-   <!-- 配置若干个拦截器 -->
-   <mvc:interceptors>
-	<!-- 配置第1个拦截器 -->
-   	<mvc:interceptor>
-  		<!-- 配置的顺序必须：mapping、exclude-mapping、bean -->
-  		<!-- mapping：拦截路径 -->
-   		<mvc:mapping path="/user/**"/>
-   		<mvc:mapping path="/address/**"/>
-  		<!-- exclude-mapping：白名单路径 -->
-   		<mvc:exclude-mapping path="/user/login.do"/>
-   		<mvc:exclude-mapping path="/user/handle_login.do"/>
-   		<mvc:exclude-mapping path="/user/reg.do"/>
-   		<mvc:exclude-mapping path="/user/handle_reg.do"/>
-  		<!-- bean：拦截器类 -->
-   		<bean class="cn.tedu.store.interceptor.LoginInterceptor"></bean>
-   	</mvc:interceptor>
-   </mvc:interceptors>
-</beans>
+  
+  <!--组件扫描 -->
+  <context:component-scan 
+  			base-package="cn.tedu.store.controller"/>
+  
+	<!-- 配置视图解析器 -->
+	<bean id="viewResolver"
+  		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  	<property name="prefix" value="/web/"/>
+	  	<property name="suffix" value=".jsp"/>		
+	</bean>
+  
+	<mvc:annotation-driven />
+  
+	<!-- 配置若干个拦截器 -->
+	<mvc:interceptors>
+		<!-- 配置第1个拦截器 -->
+  		<mvc:interceptor>
+  			<!-- 配置的顺序必须：mapping、exclude-mapping、bean -->
+  			
+  			<!-- mapping：拦截路径 -->
+  			<mvc:mapping path="/user/**"/>
+  			<mvc:mapping path="/address/**"/>
+  			<mvc:mapping path="/cart/**"/>
+  			<mvc:mapping path="/order/**"/>
+  			
+  			<!-- exclude-mapping：白名单路径 -->
+  			<mvc:exclude-mapping path="/user/reg.do"/>
+  			<mvc:exclude-mapping path="/user/handle_reg.do"/>
+  			<mvc:exclude-mapping path="/user/login.do"/>
+  			<mvc:exclude-mapping path="/user/handle_login.do"/>
+  			
+  			<!-- bean：拦截器类 -->
+  			<bean class="cn.tedu.store.interceptor.LoginInterceptor">
+  			</bean>
+  		</mvc:interceptor>
+	</mvc:interceptors>
 
+</beans>
 
 
 

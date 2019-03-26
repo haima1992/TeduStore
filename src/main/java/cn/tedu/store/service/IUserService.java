@@ -1,6 +1,8 @@
 package cn.tedu.store.service;
 
 import cn.tedu.store.entity.User;
+import cn.tedu.store.service.ex.UserNotExistsException;
+import cn.tedu.store.service.ex.UsernameConflictException;
 
 public interface IUserService {
 	
@@ -8,21 +10,21 @@ public interface IUserService {
 	 * 用户注册
 	 * @param user 注册的用户信息
 	 * @return 用户信息，包括用户id
-	 * @throws 
+	 * @throws UsernameConflictException
 	 */
 	User reg(User user);
 	
 	/**
-	 * 根据id查询用户信息
+	 * 根据用户id查询用户信息
 	 * @param id 用户id
-	 * @return
+	 * @return 用户信息，如果没有匹配的用户信息，则返回null
 	 */
 	User findUserById(Integer id);
 	
 	/**
 	 * 根据用户名查询用户信息
 	 * @param username 用户名
-	 * @return 用户信息,包括用户id
+	 * @return 用户信息，如果没有匹配的用户信息，则返回null
 	 */
 	User findUserByUsername(String username);
 	
@@ -32,7 +34,8 @@ public interface IUserService {
 	 * @param salt 盐
 	 * @return 密文密码
 	 */
-	String getEncrpytedPassword(String password,String salt);
+	String getEncrpytedPassword(
+            String password, String salt);
 	
 	/**
 	 * 用户登录
@@ -42,26 +45,41 @@ public interface IUserService {
 	 * @throws UserNotExistsException
 	 * @throws PasswordNotMatchException
 	 */
-	User login(String username,String password);
+	User login(String username, String password);
 	
 	/**
-	 * 修改用户密码
+	 * 修改密码
 	 * @param id 用户id
-	 * @param oidPassword 原密码
+	 * @param oldPassword 旧密码
 	 * @param newPassword 新密码
-	 * @return
-	 * @throws
+	 * @return 受影响的行数
+	 * @throws UserNotExistsException
+	 * @throws PasswordNotMatchException
 	 */
-	Integer changePassword(Integer id,String oldPassword,String newPassword);
+	Integer changePassword(Integer id,
+                           String oldPassword, String newPassword);
 	
 	/**
-	 * 修改用户资料
+	 * 修改用户个人信息
 	 * @param id 用户id
-	 * @param username 用户名
-	 * @param gender 用户性别
-	 * @param phone 用户电话
-	 * @param email 用户邮箱
-	 * @return
+	 * @param username 新的用户名
+	 * @param gender 新的性别
+	 * @param phone 新的手机号
+	 * @param email 新的电子邮件
+	 * @return 受影响的行数
+	 * @throws UserNotExistsException
 	 */
-	Integer changeInfo(Integer id,String username,Integer gender,String phone,String email);
+	Integer changeInfo(
+            Integer id,
+            String username,
+            Integer gender,
+            String phone,
+            String email);
 }
+
+
+
+
+
+
+

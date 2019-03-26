@@ -13,7 +13,7 @@ public interface IGoodsCategoryService {
 	 */
 	@Deprecated
 	List<GoodsCategory> getGoodsCategoryList(
-			Integer parentId);
+            Integer parentId);
 	
 	/**
 	 * 获取商品分类列表
@@ -22,8 +22,8 @@ public interface IGoodsCategoryService {
 	 * @return 商品分类的List集合
 	 */
 	List<GoodsCategory> getList(
-			Long parentId, 
-			Integer count);
+            Long parentId,
+            Integer count);
 	
 	/**
 	 * 获取商品分类列表
@@ -31,4 +31,11 @@ public interface IGoodsCategoryService {
 	 * @return 商品分类的List集合
 	 */
 	List<GoodsCategory> getList(Long parentId);
+	
+	/**
+	 * 根据商品分类的id，获取商品分类信息
+	 * @param id 商品分类的id
+	 * @return 商品分类信息
+	 */
+	GoodsCategory getGoodsCategoryById(Long id);
 }

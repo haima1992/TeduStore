@@ -15,7 +15,7 @@ public interface GoodsCategoryMapper {
 	 */
 	@Deprecated
 	List<GoodsCategory> getGoodsCategoryList(
-			Integer parentId);
+            Integer parentId);
 	
 	/**
 	 * 获取商品分类列表
@@ -24,7 +24,14 @@ public interface GoodsCategoryMapper {
 	 * @return 商品分类的List集合
 	 */
 	List<GoodsCategory> getList(
-			@Param("parentId") Long parentId, 
-			@Param("count") Integer count);
+            @Param("parentId") Long parentId,
+            @Param("count") Integer count);
+	
+	/**
+	 * 根据商品分类的id，获取商品分类信息
+	 * @param id 商品分类的id
+	 * @return 商品分类信息
+	 */
+	GoodsCategory getGoodsCategoryById(Long id);
 	
 }

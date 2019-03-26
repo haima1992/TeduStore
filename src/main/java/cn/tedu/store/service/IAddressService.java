@@ -3,38 +3,39 @@ package cn.tedu.store.service;
 import java.util.List;
 
 import cn.tedu.store.entity.Address;
+import cn.tedu.store.service.ex.DataNotExistsException;
 
 public interface IAddressService {
-	
+
 	/**
-	 * 新增收获地址
-	 * @param address 收获地址
-	 * @return 收获地址完整信息，将包括数据的id
+	 * 新增收货地址
+	 * @param address 收货地址
+	 * @return 收货地址完整信息，将包括数据的id
 	 */
-	Address addNew(Address address);
+	Address addnew(Address address);
 	
 	/**
-	 * 根据用户的id获取某个用户创建的所有收货地址
+	 * 根据用户的id获取该用户的所有收货地址
 	 * @param uid 用户的id
-	 * @return 该用户的收获地址列表
+	 * @return 该用户的收货地址列表
 	 */
 	List<Address> getAddressListByUid(Integer uid);
 	
 	/**
-	 * 根据数据id获取指定的收货地址信息
+	 * 根据数据id获取收货地址信息
 	 * @param id 数据id
-	 * @return 收获地址信息
+	 * @return 收货地址信息
 	 */
 	Address getAddressById(Integer id);
 	
 	/**
-	 * 根据数据id删除指定的收货地址信息
+	 * 根据数据id删除收货地址信息
 	 * @param id 数据id
-	 * @param uid 用户id
-	 * @return 如果删除成功则返回1，删除失败返回0
+	 * @param uid 数据持有者的id
+	 * @return 如果删除成功则返回1，否则，返回0
 	 */
-	Integer deleteAddressById(Integer id,Integer uid);
-
+	Integer deleteAddressById(Integer id, Integer uid);
+	
 	/**
 	 * 将指定的收货地址设置为默认收货地址
 	 * @param id 需要设置为默认收货地址的数据id
@@ -51,5 +52,12 @@ public interface IAddressService {
 	 * @return 受影响的行数
 	 * @throws DataNotExistsException
 	 */
-	Integer changeAddressInfo(String username,Address address);
+	Integer update(String username, Address address);
+	
 }
+
+
+
+
+
+

@@ -7,20 +7,19 @@ import org.springframework.stereotype.Service;
 
 import cn.tedu.store.entity.Province;
 import cn.tedu.store.mapper.ProvinceMapper;
+
 @Service("provinceService")
-public class ProvinceServiceImpl implements IProvinceService{
-	
+public class ProvinceServiceImpl implements IProvinceService {
+
 	@Autowired
 	private ProvinceMapper provinceMapper;
 	
-	public List<Province> getAllProvince() {
-		List<Province> provinces = provinceMapper.getProvinceList();
-		return provinces;
+	public List<Province> getProvinceList() {
+		return provinceMapper.getProvinceList();
 	}
 
 	public Province getProvinceByCode(String provinceCode) {
-		Province province = provinceMapper.getProvinceByCode(provinceCode);
-		return province;
+		return provinceMapper.getProvinceByCode(provinceCode);
 	}
 
 }

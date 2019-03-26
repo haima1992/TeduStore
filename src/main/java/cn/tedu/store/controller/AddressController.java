@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.tedu.store.entity.Address;
 import cn.tedu.store.entity.Area;
@@ -22,74 +23,89 @@ import cn.tedu.store.service.ex.ServiceException;
 
 @Controller
 @RequestMapping("/address")
-public class AddressController extends BaseController{
+public class AddressController extends BaseController {
 	
-	@Autowired
+	@Autowired 
 	private IProvinceService provinceService;
-	@Autowired
-	private IAddressService addressService;
 	@Autowired
 	private ICityService cityService;
 	@Autowired
 	private IAreaService areaService;
+	@Autowired
+	private IAddressService addressService;
 	
-	//显示地址管理页面
 	@RequestMapping("/list.do")
-	public String showList(String action,Integer id,ModelMap map,HttpSession session) {
+	public String showList(
+			String action,
+			Integer id,
+			ModelMap modelMap, HttpSession session) {
 		// 判断此次显示列表页时，表单的操作类型
 		String actionUrl;
 		String actionTitle;
-		if(!"edit".equals(action)) {
-			action = "addNew";
-			actionUrl = "add.do";
+		if (!"edit".equals(action)) {
+			action = "addnew";
+			actionUrl = "addnew.do";
 			actionTitle = "增加";
-		}else {
+		} else {
 			action = "edit";
 			actionUrl = "edit.do";
 			actionTitle = "修改";
-			//如果此次操作是edit类型，需要读取对应的数据
-			Address address = addressService.getAddressById(id);
-			//获取修改的地址对应的市列表和区列表，并转发到JSP页面
-			List<City> cities = cityService.getAllCityByProvince(address.getRecvProvince());
-			List<Area> areas = areaService.getAllAreaByCityCode(address.getRecvCity());
+			// 如果此次是修改操作，需要读取对应的数据
+			Address address = 
+					addressService.getAddressById(id);
+			// 获取修改的地址对应的市列表和区列表
+			// 并转发到JSP页面
+			List<City> cities = cityService
+					.getCityListByProvinceCode(
+							address.getRecvProvince());
+			List<Area> areas = areaService
+					.getAreaListByCityCode(
+							address.getRecvCity());
 			// 封装所修改的收货地址数据
-			map.addAttribute("address", address);
+			modelMap.addAttribute("address", address);
 			// 封装市列表
-			map.put("cities", cities);
+			modelMap.addAttribute("cities", cities);
 			// 封装区列表
-			map.put("areas", areas);
+			modelMap.addAttribute("areas", areas);
 		}
 		// 获取省的列表
-		List<Province> provinces = provinceService.getAllProvince();
-		// 获取用户id
+		List<Province> provinces
+			= provinceService.getProvinceList();
+		// 获取当前登录的用户的uid
 		Integer uid = getUidFromSession(session);
-		List<Address> addresses = addressService.getAddressListByUid(uid);
-		// 封装页面操作类型的名称
-		map.put("actionTitle", actionTitle);
-		// 封装当前页面表单的操作类型和提交路径
-		map.put("action", action);
-		map.put("actionUrl", actionUrl);
+		// 获取收货地址列表
+		List<Address> addresses = 
+			addressService.getAddressListByUid(uid);
+		// 封装页面操作类型的名称 
+		modelMap.addAttribute("actionTitle", actionTitle);
+		// 封装当前页面表单的操作类型和提交位置
+		modelMap.addAttribute("action", action);
+		modelMap.addAttribute("actionUrl", actionUrl);
 		// 封装省的列表，以准备转发
-		map.put("provinces",provinces);
-		// 封装指定用户的地址列表
-		map.put("addresses", addresses);
+		modelMap.addAttribute("provinces", provinces);
+		// 封装收货地址列表，以准备转发
+		modelMap.addAttribute("addresses", addresses);
 		// 执行转发
 		return "address";
 	}
 	
-	@RequestMapping("/add.do")
-	public String handleAddNew(Address address,HttpSession session) {
-		// 此处省略N多数据有效性判断
+	@RequestMapping("/addnew.do")
+	public String handleAddnew(Address address,
+			HttpSession session) {
+		// 此次省略N多数据有效性的判断
 		
-		// 封装用户id
+		// 封装uid
 		Integer uid = getUidFromSession(session);
 		address.setUid(uid);
-		addressService.addNew(address);
+		// 执行增加
+		addressService.addnew(address);
+		// 完成，重定向
 		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/delete.do")
-	public String handleDelete(Integer id,HttpSession session) {
+	public String handleDelete(
+			Integer id, HttpSession session) {
 		// 获取uid
 		Integer uid = getUidFromSession(session);
 		// 执行删除
@@ -100,7 +116,8 @@ public class AddressController extends BaseController{
 	
 	@RequestMapping("/set_default.do")
 	public String handleSetDefault(
-		Integer id, HttpSession session, 
+		@RequestParam("id") Integer id, 
+		HttpSession session, 
 		ModelMap modelMap) {
 		// 获取uid
 		Integer uid = getUidFromSession(session);
@@ -116,22 +133,29 @@ public class AddressController extends BaseController{
 		}
 	}
 	
-	@RequestMapping(value="/edit.do",method=RequestMethod.POST)
-	public String handleEdit(Address address,HttpSession session) {
+	@RequestMapping(value="/edit.do", 
+			method=RequestMethod.POST)
+	public String handleEdit(
+		Address address,
+		HttpSession session) {
 		// 获取username
-		String username = session.getAttribute("uname").toString();
+		String username = 
+			session.getAttribute("username").toString();
 		// 获取uid
 		Integer uid = getUidFromSession(session);
+		
 		// 向Address对象中封装数据
 		address.setUid(uid);
+
 		try {
 			// 执行修改
-			addressService.changeAddressInfo(username,address);
+			addressService.update(username, address);
+
 			// 返回：重定向
 			return "redirect:list.do";
 		} catch (ServiceException e) {
 			// 转发到专门提示错误的页面
-			return "error";
+			return "error"; 
 		}
 	}
 	

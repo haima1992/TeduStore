@@ -1,6 +1,7 @@
 package cn.tedu.store.service.ex;
 
-public class ServiceException extends RuntimeException{
+public class ServiceException 
+	extends RuntimeException {
 
 	private static final long serialVersionUID = -2879099986352308425L;
 
@@ -23,6 +24,5 @@ public class ServiceException extends RuntimeException{
 	public ServiceException(Throwable cause) {
 		super(cause);
 	}
-	
-	
+
 }

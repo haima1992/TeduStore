@@ -51,6 +51,18 @@
 		LIMIT 0, #{count}
 		</if>
 	</select>
+	
+	<!-- 根据商品分类的id，获取商品分类信息 -->
+	<!-- GoodsCategory getGoodsCategoryById(Long id) -->
+	<select id="getGoodsCategoryById"
+		resultType="cn.tedu.store.entity.GoodsCategory">
+		SELECT 
+			id, name
+		FROM 
+			t_goods_category
+		WHERE 
+			id=#{id}
+	</select>
 
 </mapper>
 

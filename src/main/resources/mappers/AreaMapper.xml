@@ -1,45 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<!-- 
-	1.namespace表示命名空间  匹配的接口
-	2.必须为接口名
- -->
+
 <mapper namespace="cn.tedu.store.mapper.AreaMapper">
-	<!-- 根据市的代号，获取所有区的列表 -->
-	<!-- List<Area> getAreaListByCityCode(String cityCode); -->
-	<select id="getAreaListByCityCode" resultType="cn.tedu.store.entity.Area">
-		select 
+
+	<!-- 根据市的代号，获取对应的区的列表 -->
+	<!-- List<Area> 
+			getAreaListByCityCode(
+				String cityCode) -->
+	<select id="getAreaListByCityCode"
+		resultType="cn.tedu.store.entity.Area">
+		SELECT 
 			id,
-			city_code as cityCode,
-			area_code as code,
-			area_name as name 
-		from 
-			t_dict_areas
-		where
+			city_code AS cityCode, 
+			area_code AS code,
+			area_name AS name 
+		FROM 
+			t_dict_areas 
+		WHERE 
 			city_code=#{cityCode}
 	</select>
 	
 	<!-- 根据区的代号，获取区的信息 -->
-	<!-- Area getAreaByCode(String areaCode); -->
-	<select id="getAreaByCode" resultType="cn.tedu.store.entity.Area">
-		select 
+	<!-- Area getAreaByCode(String areaCode) -->
+	<select id="getAreaByCode"
+		resultType="cn.tedu.store.entity.Area">
+		SELECT 
 			id,
-			city_code as cityCode,
-			area_code as code,
-			area_name as name 
-		from 
-			t_dict_areas
-		where
+			city_code AS cityCode, 
+			area_code AS code,
+			area_name AS name 
+		FROM 
+			t_dict_areas 
+		WHERE 
 			area_code=#{areaCode}
 	</select>
+
 </mapper>
-	
-	
-	
-	
-	
-	
-	
-	
-	

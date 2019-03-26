@@ -1,6 +1,7 @@
 package cn.tedu.store.service.ex;
 
-public class UserNotExistsException extends ServiceException {
+public class UserNotExistsException 
+	extends DataNotExistsException {
 
 	private static final long serialVersionUID = -4727301496231842766L;
 
@@ -24,5 +25,5 @@ public class UserNotExistsException extends ServiceException {
 	public UserNotExistsException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

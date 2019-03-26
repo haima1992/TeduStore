@@ -1,31 +1,36 @@
 package cn.tedu.store.entity;
 
 public class ResponseResult<T> {
+	
+	public static final int STATE_OK = 1;
+	public static final int STATE_ERR = 0;
 
-	public static final Integer STATE_ERR = 0;
-	public static final Integer STATE_OK = 1;
-	
-	private Integer state;// 成功(1)或失败(0)
-	private String message;//仅当失败时封装错误信息
-	private T data;//数据
-	
+	private Integer state;
+	private String message;
+	private T data;
+
 	public ResponseResult() {
 		super();
 	}
+
 	public ResponseResult(Integer state) {
 		super();
 		this.state = state;
 	}
-	public ResponseResult(Integer state, String message) {
+
+	public ResponseResult(
+			Integer state, String message) {
 		super();
 		this.state = state;
 		this.message = message;
 	}
+
 	public ResponseResult(Integer state, T data) {
 		super();
 		this.state = state;
 		this.data = data;
 	}
+	
 	public ResponseResult(Throwable throwable) {
 		super();
 		this.state = STATE_ERR;
@@ -54,11 +59,6 @@ public class ResponseResult<T> {
 
 	public void setData(T data) {
 		this.data = data;
-	}
-
-	@Override
-	public String toString() {
-		return "ResponseResult [state=" + state + ", message=" + message + ", data=" + data + "]";
 	}
 
 }

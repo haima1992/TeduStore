@@ -14,6 +14,7 @@ public interface UserMapper {
 	 * @return 受影响的行数
 	 */
 	Integer insert(User user);
+	
 	/**
 	 * 查询用户信息
 	 * @param where WHERE子句，不要包含WHERE关键字
@@ -23,15 +24,24 @@ public interface UserMapper {
 	 * @return 匹配的用户信息的集合
 	 */
 	List<User> select(
-			@Param("where")String where,
-			@Param("orderBy")String orderBy,
-			@Param("offset")Integer offset,
-			@Param("countPerPage")Integer countPerPage
-		);
+            @Param("where") String where,
+            @Param("orderBy") String orderBy,
+            @Param("offset") Integer offset,
+            @Param("countPerPage") Integer countPerPage);
+	
 	/**
 	 * 修改用户资料
-	 * @param user 至少封装了用户的id,和新的数据的对象
+	 * @param user 至少封装了用户的id，和新的数据的对象
 	 * @return 受影响的行数
 	 */
 	Integer update(User user);
+
 }
+
+
+
+
+
+
+
+

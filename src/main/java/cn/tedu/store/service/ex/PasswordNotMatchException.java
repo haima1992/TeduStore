@@ -24,5 +24,5 @@ public class PasswordNotMatchException extends ServiceException {
 	public PasswordNotMatchException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

@@ -13,19 +13,42 @@ import cn.tedu.store.service.IProvinceService;
 
 @Controller
 @RequestMapping("/province")
-public class ProvinceController extends BaseController{
+public class ProvinceController 
+	extends BaseController {
 	
 	@Autowired
 	private IProvinceService provinceService;
 	
 	@RequestMapping("/list.do")
 	@ResponseBody
-	public ResponseResult<List<Province>> getProvinceList(){
-		return new ResponseResult<List<Province>>(ResponseResult.STATE_OK,provinceService.getAllProvince());
+	public ResponseResult<List<Province>>
+			getList() {
+		ResponseResult<List<Province>> rr;
+		List<Province> provinces = 
+				provinceService.getProvinceList();
+		rr = new ResponseResult<List<Province>>(
+				ResponseResult.STATE_OK, provinces);
+		return rr;
 	}
+	
 	@RequestMapping("/info.do")
 	@ResponseBody
-	public ResponseResult<Province> getProvinceByCode(String provinceCode){
-		return new ResponseResult<Province>(ResponseResult.STATE_OK,provinceService.getProvinceByCode(provinceCode));
+	public ResponseResult<Province>
+		getInfo(String code) {
+		ResponseResult<Province> rr;
+		Province province = 
+				provinceService.getProvinceByCode(code);
+		rr = new ResponseResult<Province>(
+				ResponseResult.STATE_OK, province);
+		return rr;
 	}
+
 }
+
+
+
+
+
+
+
+

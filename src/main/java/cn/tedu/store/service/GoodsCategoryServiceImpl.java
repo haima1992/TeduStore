@@ -37,6 +37,11 @@ public class GoodsCategoryServiceImpl implements IGoodsCategoryService {
 		// 直接调用自身的重载方法
 		return getList(parentId, null);
 	}
+
+	public GoodsCategory getGoodsCategoryById(Long id) {
+		return goodsCategoryMapper
+				.getGoodsCategoryById(id);
+	}
 	
 }
 

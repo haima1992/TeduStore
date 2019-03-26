@@ -7,20 +7,19 @@ import org.springframework.stereotype.Service;
 
 import cn.tedu.store.entity.City;
 import cn.tedu.store.mapper.CityMapper;
+
 @Service("cityService")
-public class CityServiceImpl implements ICityService{
+public class CityServiceImpl implements ICityService {
 	
 	@Autowired
 	private CityMapper cityMapper;
-	
-	public List<City> getAllCityByProvince(String provinceCode) {
-		List<City> cities = cityMapper.getCityListByProvinceCode(provinceCode);
-		return cities;
+
+	public List<City> getCityListByProvinceCode(String provinceCode) {
+		return cityMapper.getCityListByProvinceCode(provinceCode);
 	}
 
 	public City getCityByCode(String cityCode) {
-		City city = cityMapper.getCityByCode(cityCode);
-		return city;
+		return cityMapper.getCityByCode(cityCode);
 	}
 
 }
