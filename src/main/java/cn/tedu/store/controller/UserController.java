@@ -99,7 +99,7 @@ public class UserController extends BaseController {
 		try {
 			User user = userService.login(username, password);
 			session.setAttribute("uid", user.getId());
-			session.setAttribute("username", user.getUsername());
+			session.setAttribute("uname", user.getUsername());
 			rr = new ResponseResult<Void>(
 					ResponseResult.STATE_OK);
 		} catch (ServiceException e) {

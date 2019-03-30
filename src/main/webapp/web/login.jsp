@@ -71,8 +71,8 @@
 <div class="foot_bj">
     <div id="foot">
         <div class="lf">
-            <p class="footer1"><img src="../images/footer/logo.png" alt="" class=" footLogo"/></p>
-            <p class="footer2"><img src="../images/footer/footerFont.png"alt=""/></p>
+            <p class="footer1"><img src="../images/footer/logo.png" alt="" class="footLogo"/></p>
+            <p class="footer2"><img src="../images/footer/footerFont.png" alt=""/></p>
             
         </div>
         <div class="foot_left lf" >
@@ -128,7 +128,6 @@
             dataType:"json",
             beforeSend:function(XMLHttpRequest){
                 $("#showResult").text("正在查询");
-
             },
             success:function(obj){
             	alert(obj)
@@ -172,7 +171,7 @@
     });
 </script>
 <script type="text/javascript">
-
+    //如果浏览器已记住用户名和密码，自动从cookie取值
     $(document).ready(function () {
         if ($.cookie("rmbUser") == "true") {
             $("#ck_rmbUser").attr("checked", true);
