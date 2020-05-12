@@ -9,8 +9,5 @@
         <module name="TeduStore" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TeduStore" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
