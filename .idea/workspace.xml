@@ -83,7 +83,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2400589" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.8" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -187,6 +187,7 @@
       <workItem from="1559147306102" duration="336000" />
       <workItem from="1559223798341" duration="35000" />
       <workItem from="1589256448671" duration="999000" />
+      <workItem from="1589276923693" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="整理">
       <created>1589256596806</created>
@@ -202,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589276800860</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="整理">
+      <created>1589276933821</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589276933821</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,14 +221,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="整理" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="305" y="0" key="CommitChangelistDialog2" timestamp="1589276799407">
+    <state x="305" y="0" key="CommitChangelistDialog2" timestamp="1589276932770">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="305" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589276799407" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589276863102">
+    <state x="305" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589276932770" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1589277814917">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589276863102" />
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589277814917" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589276940499">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589276940499" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
