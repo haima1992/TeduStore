@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47840340-7cd9-499d-9adc-0ed311cfdc5c" name="Default Changelist" comment="" />
+    <list default="true" id="47840340-7cd9-499d-9adc-0ed311cfdc5c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,12 +65,6 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="30" />
-    <option name="y" value="10" />
-    <option name="width" value="1120" />
-    <option name="height" value="630" />
-  </component>
   <component name="ProjectId" id="1bn8M6H4TVPBXGjhB5qBxW1Znz7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -83,7 +79,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2400589" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.8" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -187,7 +183,7 @@
       <workItem from="1559147306102" duration="336000" />
       <workItem from="1559223798341" duration="35000" />
       <workItem from="1589256448671" duration="999000" />
-      <workItem from="1589276923693" duration="681000" />
+      <workItem from="1589276923693" duration="3518000" />
     </task>
     <task id="LOCAL-00001" summary="整理">
       <created>1589256596806</created>
@@ -210,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589276933821</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="整理">
+      <created>1589278100892</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589278100892</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,18 +224,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="整理" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="305" y="0" key="CommitChangelistDialog2" timestamp="1589276932770">
+    <state x="305" y="0" key="CommitChangelistDialog2" timestamp="1589278099929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="305" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589276932770" />
-    <state x="270" y="57" key="SettingsEditor" timestamp="1589277814917">
+    <state x="305" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589278099929" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1589289134608">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589277814917" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589276940499">
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589289134608" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589278925883">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589276940499" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589278925883" />
+    <state x="556" y="312" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589278768745">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="556" y="312" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589278768745" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
