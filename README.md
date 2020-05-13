@@ -1,2 +1,1 @@
-# TeduStore
-学子商城
+# TeduStore 学子商城
