@@ -1,3 +1,9 @@
-/target/
-/.settings/
-/.idea/
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+.settings
+*.iml
+target
+out
